@@ -1,0 +1,154 @@
+ion-header {
+  background: white;
+}
+
+ion-header>h1 {
+  color: #3d5a80;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cabecera{
+  background-color: #3d5a80;
+  display: flex;
+  justify-content: space-between;
+  height: 5em;
+  padding: 1em;
+}
+
+
+#acciones{
+  display: flex;
+  justify-content: space-between;
+  margin: 0.9em 1.5em 0em 0em ;
+}
+
+  #acciones>a>img{
+    background-color: #3d5a80;
+    border-radius: 4em;
+    margin: 0em 0em 0em 0.6em;
+    padding: 0.5em 1.2em 0.5em 1.2em;
+    width: 4.1em;
+    box-shadow: 0em 0.2em 0.2em 0em #8f949b;
+  }
+
+  #acciones>div>button{
+    background: none;
+  }
+
+  #acciones>div>button>img{
+    background-color: #3d5a80;
+    border-radius: 4em;
+    overflow-clip-margin: border-box;
+    margin: 0.3em 0em 0em 0.6em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    width: 2.8em;
+    box-shadow: 0em 0.2em 0.2em 0em #8f949b;
+  }
+
+
+#tablaUsuarios>ion-row:first-child{
+  background-color: #3d5a80;
+  border-radius: 0.2em;
+  color: white;
+  font-weight: bold;
+  padding: 0.4em 0.4em 0.4em 4em;
+}
+
+.registrosTabla:nth-child(even){
+  background-color: #DAE1EB;
+  border-radius: 1.3em;
+  margin: 0.5em;
+  padding: 0.5em 0em 0.5em 3.5em;
+  display: flex;
+  align-items: center;
+}
+
+.registrosTabla:nth-child(odd){
+  background-color: #9EB0C8;
+  border-radius: 1.3em;
+  margin: 0.5em;
+  padding: 0.5em 0em 0.5em 3.5em;
+  display: flex;
+  align-items: center;
+}
+
+.iconosAcciones{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+  .iconosAcciones>img{
+    background-color: white;
+    width: 2.2em;
+    border-radius: 4em;
+    overflow-clip-margin: border-box;
+    padding: 0.5em;
+    box-shadow: 0em 0.3em 0.3em 0em #8f949b;
+  }
+
+
+  /*MODALES*/
+
+ion-modal ion-toolbar, ion-modal ion-content{
+  --background: #3d5a80;
+}
+
+
+ion-modal::part(backdrop) {
+  background: var(--ion-backdrop-color, #000);
+  opacity: 1;
+}
+
+#modalAgregar, #modalEditar{
+  --height: 45%;
+  --width: 90%;
+  --border-radius: 0.3em;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.inputs>ion-item{
+  margin-bottom: 1em;
+  --border-radius: 0.3em;
+  color: #3d5a80;
+  font-weight: bold;
+}
+
+#modalBuscar{
+  --height: 35%;
+  --width: 90%;
+  --border-radius: 0.3em;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.botonNOTOKModal{
+  color: white;
+  font-weight: bold;
+  border-radius: 4em;
+  border-width: 2em;
+  box-shadow: 0em 0.3em 0.3em 0em #292929;
+  width: 50%;
+}
+
+.botonOKModal{
+  background-color: white;
+  color: #3d5a80;
+  font-weight: bold;
+  border-radius: 4em;
+  box-shadow: 0em 0.3em 0.3em 0em #292929;
+  width: 50%;
+}
+
+.botonesForm{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1em;
+}
+
+.label{
+  color:white;
+  font-weight: bold;
+  font-size: 1.5em;
+}

@@ -1,0 +1,98 @@
+<ion-header>
+  <div id="cabecera">
+    <a href="/menu-secciones">
+      <img src="../../assets/img/logoDomus.png" alt="Logo domus" width="50px">
+    </a>
+    <img src="../../assets/icon/user.svg" alt="Icono usuario" width="50px" (click)="logout()">
+  </div>
+  <div id="acciones">
+    <a href="/menu-secciones"><img src="../../assets/icon/volver.svg" alt="Icono botón volver"></a>
+    <div>
+      <button id="buscarUsuario"><img src="../../assets/icon/buscar.svg" alt="Icono botón buscar usuarios" width="50px"></button>
+      <button id="agregarUsuario"><img src="../../assets/icon/agregar.svg" alt="Icono botón agregar usuario" width="50px"></button>
+    </div>
+  </div>
+  <h1>Gestión usuarios</h1>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid id="tablaUsuarios">
+    <ion-row>
+      <ion-col size="6" size-md="4" size-lg="2">Usuario</ion-col>
+    </ion-row>
+    <ion-row class="registrosTabla" *ngFor="let usuario of this.usuarios">
+      <ion-col>{{usuario.nombre}}</ion-col>
+      <ion-col class="iconosAcciones">
+        <img src="../../assets/icon/editar.svg" alt="Icono editar usuario" (click)="abrirModalEditarUsuario(usuario)">
+        <img src="../../assets/icon/eliminar.svg" alt="Icono eliminar usuario" (click)="eliminarUsuario(usuario)">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-modal [isOpen]="abrirModalEditar" #modalEditar id="modalEditar" (willDismiss)="cancelarModalEditar()">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <form [formGroup]="formEditar">
+          <p class="label">Editar {{this.usuarioSelec.nombre}}</p>
+          <div class="inputs">
+            <ion-item>
+              <ion-label position="floating">Nombre*</ion-label>
+              <ion-input type="text" placeholder="Introduce el nombre del usuario" formControlName="nombre" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Pin*</ion-label>
+              <ion-input type="password" placeholder="Introduce el pin del usuario" formControlName="pin" required></ion-input>
+            </ion-item>
+          </div>
+        </form>
+        <div class="botonesForm">
+          <ion-button fill="outline" shape="round" color="#3d5a80" (click)="cancelarModalEditar()" class="botonNOTOKModal">Cancelar</ion-button>
+          <ion-button shape="round" color="white" type="submit" type="submit" (click)="editarUsuario()" class="botonOKModal">Guardar</ion-button>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal trigger="agregarUsuario" #modalAgregar id="modalAgregar" (willDismiss)="cancelarModalAgregar()">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <form [formGroup]="formAgregar">
+          <p class="label">Agregar usuario</p>
+          <div class="inputs">
+            <ion-item>
+              <ion-label position="floating">Nombre*</ion-label>
+              <ion-input type="text" placeholder="Introduce el nombre del usuario" formControlName="nombre" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Pin*</ion-label>
+              <ion-input type="password" placeholder="Introduce el pin del usuario" formControlName="pin" required></ion-input>
+            </ion-item>
+          </div>
+        </form>
+        <div class="botonesForm">
+          <ion-button fill="outline" shape="round" color="#3d5a80" (click)="cancelarModalAgregar()" class="botonNOTOKModal">Cancelar</ion-button>
+          <ion-button shape="round" color="white" type="submit" type="submit" (click)="agregarUsuario()" class="botonOKModal">Guardar</ion-button>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal trigger="buscarUsuario" #modalBuscar id="modalBuscar" (willDismiss)="cancelarModalBuscar()">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <form [formGroup]="formBuscar">
+          <p class="label">Buscar usuario</p>
+          <ion-item>
+            <ion-input type="text" placeholder="Introduce el texto de búsqueda" formControlName="texto"></ion-input>
+          </ion-item>
+        </form>
+        <div class="botonesForm">
+          <ion-button fill="outline" shape="round" color="#3d5a80" (click)="cancelarModalBuscar()" class="botonNOTOKModal">Cancelar</ion-button>
+          <ion-button shape="round" color="white" type="submit" (click)="busqueda()" class="botonOKModal">Buscar</ion-button>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>

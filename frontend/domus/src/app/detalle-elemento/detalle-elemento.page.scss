@@ -1,0 +1,182 @@
+ion-header {
+  background: white;
+}
+
+.contenidoSeccion>div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+#cabecera{
+  background-color: #3d5a80;
+  display: flex;
+  justify-content: space-between;
+  height: 5em;
+  padding: 1em;
+}
+
+
+#acciones{
+  display: flex;
+  justify-content: space-between;
+  margin: 0.9em 1.5em 0em 0em ;
+}
+
+  #acciones>a>img{
+    background-color: #3d5a80;
+    border-radius: 4em;
+    margin: 0em 0em 0em 0.6em;
+    padding: 0.5em 1.2em 0.5em 1.2em;
+    width: 4.1em;
+    box-shadow: 0em 0.2em 0.2em 0em #8f949b;
+  }
+
+  #acciones>div>img{
+    background-color: #3d5a80;
+    border-radius: 4em;
+    overflow-clip-margin: border-box;
+    margin: 0.3em 0em 0em 0.6em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    width: 2.2em;
+    box-shadow: 0em 0.2em 0.2em 0em #8f949b;
+  }
+
+
+#estado{
+  color: #3d5a80;
+  font-weight: bold;
+}
+
+#datosDetalle{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+  #datosDetalle>div:first-child{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #datosDetalle>div:first-child>h1{
+    color: #3d5a80;
+    font-weight: bold;
+  }
+
+  #datosDetalle>div:first-child>img{
+    width: 9em;
+    border: 0.4em solid #9EB0C8;
+    border-radius: 1.5em;
+    padding: 0.5em;
+    z-index: 1;
+    background-color: white;
+  }
+
+
+  #datosDetalle>div:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid #9EB0C8;
+    border-width: 1em 1em 5em 1em;
+    border-radius: 1.5em 1.5em 0em 0em;
+    position: absolute;
+    top: 9em;
+    height: 73.1%;
+    width: 100%;
+    padding: 2.5em 1.5em 0em 1.5em;
+    right: 0.01em;
+  }
+
+  #datosDetalle>div:nth-child(3){
+    z-index: 1;
+    position: absolute;
+    bottom: 1.9em;
+    display: flex;
+  }
+
+    #datosDetalle>div:nth-child(3)>button{
+      background-color: #3d5a80;
+      color: white;
+      font-weight: bold;
+      margin: 0em 0.7em 0em 0.7em;
+      padding: 0.5em 1em 0.5em 1em;
+      border-radius: 2em;
+      box-shadow: 0em 0.2em 0.2em 0em #8f949b;
+    }
+
+
+    /*MODALES*/
+
+ion-modal ion-toolbar, ion-modal ion-content{
+  --background: #3d5a80;
+}
+
+
+ion-modal::part(backdrop) {
+  background: var(--ion-backdrop-color, #000);
+  opacity: 1;
+}
+
+#modalEditar{
+  --height: 70%;
+  --width: 90%;
+  --border-radius: 0.3em;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.inputs>ion-item{
+  margin-bottom: 1em;
+  --border-radius: 0.3em;
+  color: #3d5a80;
+  font-weight: bold;
+}
+
+#tipo{
+  font-weight: bold;
+  color: white;
+  font-size: large;
+}
+
+#seleccionIconos{
+  display: flex;
+}
+
+#seleccionIconos ion-item{
+  --background: none;
+  color: white;
+}
+
+.botonNOTOKModal{
+  color: white;
+  font-weight: bold;
+  border-radius: 4em;
+  border-width: 2em;
+  box-shadow: 0em 0.3em 0.3em 0em #292929;
+  width: 50%;
+}
+
+.botonOKModal{
+  background-color: white;
+  color: #3d5a80;
+  font-weight: bold;
+  border-radius: 4em;
+  box-shadow: 0em 0.3em 0.3em 0em #292929;
+  width: 50%;
+}
+
+.botonesForm{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1em;
+}
+
+.label{
+  color:white;
+  font-weight: bold;
+  font-size: 1.5em;
+}

@@ -1,0 +1,174 @@
+<ion-header>
+  <div id="cabecera">
+    <a *ngIf="this.usuario?.administrador" href="/menu-secciones">
+      <img src="../../assets/img/logoDomus.png" alt="Logo domus" width="50px">
+    </a>
+    <a *ngIf="!this.usuario?.administrador" href="/panel-control">
+      <img src="../../assets/img/logoDomus.png" alt="Logo domus" width="50px">
+    </a>
+    <img src="../../assets/icon/user.svg" alt="Icono usuario" width="50px" (click)="logout()">
+  </div>
+  <div id="acciones">
+    <a *ngIf="this.usuario?.administrador" href="/menu-secciones"><img src="../../assets/icon/volver.svg" alt="Icono botón volver"></a>
+    <div>
+      <button id="buscarElemento"><img id="buscarElemento" src="../../assets/icon/buscar.svg" alt="Icono botón buscar elementos"></button>
+      <button id="agregarElemento"><img *ngIf="usuario?.administrador" src="../../assets/icon/agregar.svg" alt="Icono botón agregar elemento"></button>
+    </div>
+  </div>
+  <h1>Panel de control</h1>
+</ion-header>
+
+<ion-content class="contenidoSeccion">
+  <div class="centrarSecciones">
+
+    <ng-container *ngFor="let elemento of elementos">
+      <div>
+        <div class="botonesAccion">
+          <img id="iconoEditar" *ngIf="this.usuario?.administrador" src="../../assets/icon/editar.svg" alt="Icono editar elemento" (click)="abrirModalEditarElemento(elemento)">
+          <img id="iconoEliminar" *ngIf="this.usuario?.administrador" src="../../assets/icon/eliminar.svg" alt="Icono eliminar elemento" (click)="eliminarElemento(elemento)">
+        </div>
+
+        <a href="/panel-control/detalle-elemento/{{elemento.id}}" class="centrarSeccion">
+          <ion-card class="secciones">
+            <ion-card-content>
+              <img class="iconoSeccion" src="../../assets/icon/{{elemento.icono}}.svg" alt="Icono sección Panel de control" width="100px">
+            </ion-card-content>
+          </ion-card>
+          <p>{{elemento.nombre}}</p>
+        </a>
+      </div>
+
+    </ng-container>
+
+  </div>
+
+  <ion-modal trigger="agregarElemento" #modalAgregar id="modalAgregar" (willDismiss)="cancelarModalAgregar()">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <form [formGroup]="formAgregar">
+          <p class="label">Agregar elemento</p>
+          <div class="inputs">
+            <ion-item>
+              <ion-label position="floating">Nombre*</ion-label>
+              <ion-input type="text" placeholder="Introduce el nombre del elemento" formControlName="nombre" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Descripción*</ion-label>
+              <ion-input type="text" placeholder="Introduce la descripción del elemento" formControlName="descripcion" required=""></ion-input>
+            </ion-item>
+          </div>
+          <ion-radio-group formControlName="icono" required>
+            <ion-list-header id="tipo">
+              Tipo*
+            </ion-list-header>
+            <div id="seleccionIconos">
+              <div>
+                <ion-item>
+                  <ion-label>Vídeo</ion-label>
+                  <ion-radio value="tv" color="light"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Radio</ion-label>
+                  <ion-radio value="radio" color="light"></ion-radio>
+                </ion-item>
+              </div>
+
+              <div>
+                <ion-item>
+                  <ion-label>Luz</ion-label>
+                  <ion-radio value="luz" color="light"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Sonido</ion-label>
+                  <ion-radio value="altavoz" color="light"></ion-radio>
+                </ion-item>
+              </div>
+            </div>
+          </ion-radio-group>
+        </form>
+        <div class="botonesForm">
+          <ion-button fill="outline" shape="round" color="#3d5a80" (click)="cancelarModalAgregar()" class="botonNOTOKModal">Cancelar</ion-button>
+          <ion-button shape="round" color="white" type="submit" type="submit" (click)="agregarElemento()" class="botonOKModal">Guardar</ion-button>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
+  <ion-modal [isOpen]="abrirModalEditar" #modalEditar id="modalEditar" (willDismiss)="cancelarModalEditar()">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <form [formGroup]="formEditar">
+          <p class="label">Editar {{this.elementoSelec.nombre}}</p>
+          <div class="inputs">
+            <ion-item>
+              <ion-label position="floating">Nombre*</ion-label>
+              <ion-input type="text" placeholder="Introduce el nombre del elemento" formControlName="nombre" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Descripción*</ion-label>
+              <ion-input type="text" placeholder="Introduce la descripción del elemento" formControlName="descripcion" required></ion-input>
+            </ion-item>
+          </div>
+          <ion-radio-group formControlName="icono" required>
+            <ion-list-header id="tipo">
+              Tipo*
+            </ion-list-header>
+            <div id="seleccionIconos">
+              <div>
+                <ion-item>
+                  <ion-label>Vídeo</ion-label>
+                  <ion-radio value="tv" color="light"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Radio</ion-label>
+                  <ion-radio value="radio" color="light"></ion-radio>
+                </ion-item>
+              </div>
+
+              <div>
+                <ion-item>
+                  <ion-label>Luz</ion-label>
+                  <ion-radio value="luz" color="light"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Sonido</ion-label>
+                  <ion-radio value="altavoz" color="light"></ion-radio>
+                </ion-item>
+              </div>
+            </div>
+          </ion-radio-group>
+        </form>
+        <div class="botonesForm">
+          <ion-button fill="outline" shape="round" color="#3d5a80" (click)="cancelarModalEditar()" class="botonNOTOKModal">Cancelar</ion-button>
+          <ion-button shape="round" color="white" type="submit" type="submit" (click)="editarElemento()" class="botonOKModal">Guardar</ion-button>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
+  <ion-modal trigger="buscarElemento" #modalBuscar id="modalBuscar" (willDismiss)="cancelarModalBuscar()">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <form [formGroup]="formBuscar">
+          <p class="label">Buscar elemento</p>
+          <ion-item>
+            <ion-input type="text" placeholder="Introduce el nombre del elemento" formControlName="texto"></ion-input>
+          </ion-item>
+        </form>
+        <div class="botonesForm">
+          <ion-button fill="outline" shape="round" color="#3d5a80" (click)="cancelarModalBuscar()" class="botonNOTOKModal">Cancelar</ion-button>
+          <ion-button shape="round" color="white" type="submit" (click)="busqueda()" class="botonOKModal">Buscar</ion-button>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
+</ion-content>
+
+<ion-footer>
+  <a id="botonPlano" href="/plano"><img src="../../assets/icon/plano.svg" alt="Icono botón ver plano"></a>
+</ion-footer>
+

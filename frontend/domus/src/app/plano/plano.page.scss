@@ -1,0 +1,70 @@
+ion-header, ion-footer {
+  background: white;
+}
+
+ion-header>h1 {
+  color: #3d5a80;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cuadrarPlano{
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+#cabecera{
+  background-color: #3d5a80;
+  display: flex;
+  justify-content: space-between;
+  height: 5em;
+  padding: 1em;
+}
+
+
+#botonPanelControl{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+#botonPanelControl>img{
+  background-color: #3d5a80;
+  width: 5em;
+  padding: 0.5em 1.5em 0.5em 1.5em;
+  border-radius: 1.5em;
+  box-shadow: 0em 0.3em 0.3em 0em #8f949b;
+}
+
+
+#imagenPlano{
+  max-width: 90%;
+}
+
+
+.pinHabitacion{
+  background-color: white;
+  width: 50px;
+  position: absolute;
+  z-index: 99;
+  border-radius: 0.7em;
+  box-shadow: 0em 0.3em 0.3em 0em #292929;
+  top: 1.5em;
+  right: 8em;
+}
+
+.pinSalon{
+  background-color: white;
+  width: 50px;
+  position: absolute;
+  z-index: 99;
+  border-radius: 0.7em;
+  box-shadow: 0em 0.3em 0.3em 0em #292929;
+  top: 16em;
+  right: 7em;
+  padding: 0.3em;
+}

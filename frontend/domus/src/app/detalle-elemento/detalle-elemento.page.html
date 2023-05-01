@@ -1,0 +1,100 @@
+<ion-header>
+  <div id="cabecera">
+    <a *ngIf="this.usuario?.administrador" href="/menu-secciones">
+      <img src="../../assets/img/logoDomus.png" alt="Logo domus" width="50px">
+    </a>
+    <a *ngIf="!this.usuario?.administrador" href="/panel-control">
+      <img src="../../assets/img/logoDomus.png" alt="Logo domus" width="50px">
+    </a>
+    <img src="../../assets/icon/user.svg" alt="Icono usuario" width="50px" (click)="logout()">
+  </div>
+  <div id="acciones">
+    <a href="/panel-control"><img src="../../assets/icon/volver.svg" alt="Icono botón volver"></a>
+  </div>
+</ion-header>
+
+<ion-content class="contenidoSeccion">
+
+  <div id="datosDetalle">
+    <div >
+      <h1>{{this.elemento?.nombre}}</h1>
+      <ng-container *ngIf="elemento">
+        <img src="../../assets/icon/{{elemento.icono}}-azul.svg" alt="Icono elemento">
+      </ng-container>
+    </div>
+
+    <div>
+      <p id="estado">{{this.elemento?.estado}}</p>
+      <p>{{this.elemento?.descripcion}}</p>
+    </div>
+
+    <div>
+      <button (click)="cambiarEstado(this.elemento?.estado)">
+        {{this.textoBoton}}
+      </button>
+      <br>
+      <button *ngIf="this.usuario?.administrador" id="editarElemento" (click)="abrirModalEditarElemento()">
+        Editar
+      </button>
+      <br>
+      <button *ngIf="this.usuario?.administrador" (click)="eliminarElemento()">
+        Eliminar
+      </button>
+
+    </div>
+  </div>
+
+
+  <ion-modal trigger="editarElemento" #modalEditar id="modalEditar" (willDismiss)="cancelarModalEditar()">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <form [formGroup]="formEditar">
+          <p class="label">Editar {{this.elemento?.nombre}}</p>
+          <div class="inputs">
+            <ion-item>
+              <ion-label position="floating">Nombre*</ion-label>
+              <ion-input type="text" placeholder="Introduce el nombre del elemento" formControlName="nombre" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Descripción*</ion-label>
+              <ion-input type="text" placeholder="Introduce la descripción del elemento" formControlName="descripcion" required></ion-input>
+            </ion-item>
+          </div>
+          <ion-radio-group formControlName="icono" required>
+            <ion-list-header id="tipo">
+              Tipo*
+            </ion-list-header>
+            <div id="seleccionIconos">
+              <div>
+                <ion-item>
+                  <ion-label>Vídeo</ion-label>
+                  <ion-radio value="tv" color="light"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Radio</ion-label>
+                  <ion-radio value="radio" color="light"></ion-radio>
+                </ion-item>
+              </div>
+
+              <div>
+                <ion-item>
+                  <ion-label>Luz</ion-label>
+                  <ion-radio value="luz" color="light"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Sonido</ion-label>
+                  <ion-radio value="altavoz" color="light"></ion-radio>
+                </ion-item>
+              </div>
+            </div>
+          </ion-radio-group>
+        </form>
+        <div class="botonesForm">
+          <ion-button fill="outline" shape="round" color="#3d5a80" (click)="cancelarModalEditar()" class="botonNOTOKModal">Cancelar</ion-button>
+          <ion-button shape="round" color="white" type="submit" type="submit" (click)="editarElemento()" class="botonOKModal">Guardar</ion-button>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>

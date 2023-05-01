@@ -1,0 +1,39 @@
+<ion-header>
+    <div id="cabecera">
+      <a href="/menu-secciones">
+        <img src="../../assets/img/logoDomus.png" alt="Logo domus" width="50px">
+      </a>
+        <img src="../../assets/icon/user.svg" alt="Icono usuario" width="50px" (click)="logout()">
+      </div>
+</ion-header>
+
+<ion-content>
+  <div class="centrarSecciones">
+    <a href="/panel-control" class="centrarSeccion">
+      <ion-card class="secciones">
+        <ion-card-content>
+          <img class="iconoSeccion" src="../../assets/icon/panel_control_seccion.svg" alt="Icono sección Panel de control" width="100px">
+        </ion-card-content>
+      </ion-card>
+      <p>Panel de control</p>
+    </a>
+
+    <a href="/registro-acciones" class="centrarSeccion">
+      <ion-card class="secciones">
+        <ion-card-content>
+          <img class="iconoSeccion" src="../../assets/icon/registro_acciones.svg" alt="Icono sección Registro acciones" width="100px">
+        </ion-card-content>
+      </ion-card>
+      <p>Registro acciones</p>
+    </a>
+
+    <a href="gestion-usuarios" class="centrarSeccion">
+      <ion-card class="secciones">
+        <ion-card-content>
+          <img class="iconoSeccion" src="../../assets/icon/gestion_usuarios.svg" alt="Icono sección Gestión usuarios" width="100px">
+        </ion-card-content>
+      </ion-card>
+      <p>Gestión usuarios</p>
+    </a>
+  </div>
+</ion-content>

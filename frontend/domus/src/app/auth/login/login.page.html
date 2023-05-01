@@ -1,0 +1,26 @@
+
+<ion-content id="formularioLogin">
+<div class="centrarLogo">
+    <ion-img src="../../../assets/img/logoDomus.png" alt="Logo de Domus" class="logo"></ion-img>
+    <h1>DomusApp</h1>
+</div>
+
+
+  <form #formularioLogin="ngForm" (ngSubmit)="login(formularioLogin)">
+    <ion-grid class="marginTop">
+
+      <ion-item class="inputsLogin">
+        <ion-input name="nombre" type="text" placeholder="Nombre de usuario" ngModel required></ion-input>
+      </ion-item>
+
+      <ion-item class="inputsLogin">
+        <ion-input name="pin" type="password" placeholder="PIN de acceso" ngModel required></ion-input>
+      </ion-item>
+
+      <div class="centrarElemento">
+        <ion-button type="submit" id="btnAcceder" >Acceder</ion-button>
+      </div>
+
+    </ion-grid>
+  </form>
+</ion-content>

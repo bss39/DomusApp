@@ -1,0 +1,24 @@
+<ion-header>
+  <div id="cabecera">
+    <a *ngIf="this.usuario?.administrador" href="/menu-secciones">
+      <img src="../../assets/img/logoDomus.png" alt="Logo domus" width="50px">
+    </a>
+    <a *ngIf="!this.usuario?.administrador" href="/panel-control">
+      <img src="../../assets/img/logoDomus.png" alt="Logo domus" width="50px">
+    </a>
+    <img src="../../assets/icon/user.svg" alt="Icono usuario" width="50px" (click)="logout()">
+  </div>
+  <h1>Plano</h1>
+</ion-header>
+
+<ion-content>
+  <div id="cuadrarPlano">
+    <a href="/panel-control/detalle-elemento/2"><img src="../../assets/icon/radio-azul.svg" alt="Icono altavoz" class="pinHabitacion"></a>
+    <a href="/panel-control/detalle-elemento/3"><img src="../../assets/icon/tv-azul.svg" alt="Icono altavoz" class="pinSalon"></a>
+    <img src="../../assets/img/plano.png" alt="Plano del hogar" id="imagenPlano">
+  </div>
+</ion-content>
+
+<ion-footer>
+  <a id="botonPanelControl" href="/panel-control"><img src="../../assets/icon/panel_control_btn.svg" alt="Icono botón ver panel control"></a>
+</ion-footer>

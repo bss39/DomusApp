@@ -1,0 +1,66 @@
+<ion-header>
+  <div id="cabecera">
+    <a href="/menu-secciones">
+      <img src="../../assets/img/logoDomus.png" alt="Logo domus" width="50px">
+    </a>
+    <img src="../../assets/icon/user.svg" alt="Icono usuario" width="50px" (click)="logout()">
+  </div>
+  <div id="acciones">
+    <a href="/menu-secciones"><img src="../../assets/icon/volver.svg" alt="Icono botón volver"></a>
+    <div>
+      <button id="buscar"><img src="../../assets/icon/buscar.svg" alt="Icono botón buscar acciones" width="50px"></button>
+    </div>
+  </div>
+  <h1>Registro acciones</h1>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ng-container *ngFor="let accion of this.acciones; index as i">
+
+      <ng-container *ngIf="acciones[i-1]?.fecha != accion.fecha">
+        <ion-row id="tituloFecha">
+          <ion-col size="6" size-md="4" size-lg="2">
+            {{accion.fecha.split('-')[2]}} - {{accion.fecha.split('-')[1]}} - {{accion.fecha.split('-')[0]}}
+          </ion-col>
+        </ion-row>
+      </ng-container>
+
+
+        <ion-row class="registrosTabla">
+        <ion-col>{{accion.hora.split(':')[0]}}:{{accion.hora.split(':')[1]}}</ion-col>
+        <ion-col>{{accion.descripcion}}</ion-col>
+
+        <ng-container *ngFor="let usu of this.usuarios">
+          <ng-container *ngIf="usu.id == accion.usuario_id">
+            <ion-col>{{ usu.nombre }}</ion-col>
+          </ng-container>
+        </ng-container>
+
+        <ion-col class="iconosAcciones">
+          <img src="../../assets/icon/eliminar.svg" alt="Icono eliminar acción" (click)="eliminarAccion(accion)">
+        </ion-col>
+      </ion-row>
+
+    </ng-container>
+  </ion-grid>
+
+  <ion-modal trigger="buscar" #modalBuscar id="modalBuscar" (willDismiss)="cancelarModalBuscar()">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <form [formGroup]="formBuscar">
+          <p class="label">Buscar acción por fecha</p>
+          <ion-item>
+            <ion-input type="date" formControlName="texto"></ion-input>
+          </ion-item>
+        </form>
+        <div class="botonesForm">
+          <ion-button fill="outline" shape="round" color="#3d5a80" (click)="cancelarModalBuscar()" class="botonNOTOKModal">Cancelar</ion-button>
+          <ion-button shape="round" color="white" type="submit" (click)="busqueda()" class="botonOKModal">Buscar</ion-button>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>

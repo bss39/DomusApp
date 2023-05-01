@@ -1,0 +1,54 @@
+#formularioLogin {
+  --background: #3d5a80;
+}
+
+
+#btnAcceder {
+  --background: #ffffff;
+  --color: #3d5a80;
+  font-weight: bold;
+  --border-radius: 2em;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+}
+
+.marginTop{
+  margin-top: 2em;
+}
+
+
+.inputsLogin{
+  --background: #3d5a80;
+  --border-radius: .75em;
+  --border-width: .3em;
+  --border-color: #fff;
+  margin: 0em 3em 1em 3em;
+}
+
+  .inputsLogin>ion-input {
+    --color: #fff;
+  }
+
+  .logo{
+    width: 175px;
+    height: 175px;
+  }
+
+
+  .centrarLogo{
+    display: flex;
+    margin-top: 5em;
+    flex-direction: column;
+    align-items: center;
+  }
+
+    .centrarLogo>h1{
+      color: #f6ca6a;
+      font-weight: bold;
+    }
+
+  .centrarElemento{
+    display: flex;
+    justify-content: center;
+  }
